@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{> head}}
+</head>
+<body>
+    <h1>Ciao</h1>
+    {{#alunniSet}}
+    <div class="row">
+    {{#alunni}}
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{nome}}</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary">{{cognome}}</h6>
+          <p class="card-text">Eta {{eta}}</p>
+        </div>
+      </div>
+    {{/alunni}}
+    </div>
+    {{/alunniSet}}
+    {{> style/bootstrap/endIncludeBootstrap}}
+</body>
+</html>
