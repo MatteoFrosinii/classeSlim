@@ -1,6 +1,6 @@
 <?php
 
-class loadedEngine  extends Mustache_Engine{
+class loadedEngine extends Mustache_Engine{
 
     public function __construct($options = []){
         parent::__construct([
