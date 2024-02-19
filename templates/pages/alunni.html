@@ -4,16 +4,24 @@
     {{> head}}
 </head>
 <body>
-    <h1>Ciao</h1>
-    {{#alunni}}
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">{{nome}}</h5>
-          <h6 class="card-subtitle mb-2 text-body-secondary">{{cognome}}</h6>
-          <p class="card-text">Eta {{eta}}</p>
+    <h1>Alunni</h1>
+    <div class="container text-center">
+    {{#setAlunni}}
+        <div class="row">
+            {{#.}}
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                    <h5 class="card-title">Nome : {{nome}}</h5>
+                    <h6 class="card-subtitle mb-2 text-body-secondary">Cognome : {{cognome}}</h6>
+                    <p class="card-text">Eta : {{eta}}</p>
+                    </div>
+                </div>
+            </div>
+            {{/.}}
         </div>
-      </div>
-    {{/alunni}}
+    {{/setAlunni}}
+    </div>
     {{> style/bootstrap/endIncludeBootstrap}}
 </body>
 </html>

@@ -6,26 +6,29 @@ class ClasseController{
 
     function getPage (Request $request, Response $response, $args){
         $classe = new Classe("5BIA");
-        $elencoStudenti = $classe->elencoStudenti;
-        $data=['setAlunni'=>[]];
-        $alunniRow = [];
-        foreach($elencoStudenti as $stud){
-            if (sizeof($alunniRow) >= 5){
-                $data['setAlunni']['Alunni'][]=$alunniRow;
-                $alunniRow = [];
-                $alunniRow[]=$stud->toArray();
-            } else {
-                $alunniRow[]=$stud->toArray();
-            }
-        }
-        if (!empty($alunniRow)){
-            $data['setAlunni'][]=$alunniRow;
-        }
-        var_dump($data);
+
         $view = new ViewHome();
-        $view->setData($data);
+        $view->setData($this->processInput($classe->elencoStudenti,4));
 
         $response->getBody()->write($view->render());
         return $response;
+    }
+
+    function processInput($arrayToProcess ,$subarraySize){
+        $processedArray=['setAlunni'=>[]];
+        $subArray = [];
+        foreach($arrayToProcess as $i){
+            if (sizeof($subArray) >= $subarraySize){
+                $processedArray['setAlunni'][]=$subArray;
+                $subArray = [];
+                $subArray[]=$i->toArray();
+            } else {
+                $subArray[]=$i->toArray();
+            }
+        }
+        if (!empty($subArray)){
+            $processedArray['setAlunni'][]=$subArray;
+        }
+        return $processedArray;
     }
 }

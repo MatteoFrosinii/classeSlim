@@ -11,7 +11,7 @@ class Classe {
 
     public function randomFillArray (){
         $array = [];
-        for ($i=0; $i < 10; $i++) { 
+        for ($i=0; $i < 25; $i++) {
             $nomeAlunno = chr(rand(65,90));
             for ($j=0; $j < rand(5,10); $j++) { 
                 $nomeAlunno.=chr(rand(97,122));    
