@@ -19,5 +19,6 @@ function autoloader($class_name){
 $app = AppFactory::create();
 
 $app->get('/alunni', 'ClasseController:getPage');
+$app->get('/alunni/{alunno}', 'SearchController:getPage');
 
 $app->run();
