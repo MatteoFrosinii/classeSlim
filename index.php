@@ -1,6 +1,5 @@
 <?php
-use Psr\Http\Message\ResponseInterface as Response;
-use Psr\Http\Message\ServerRequestInterface as Request;
+
 use Slim\Factory\AppFactory;
 
 require __DIR__ . '/vendor/autoload.php';
@@ -21,7 +20,14 @@ $app = AppFactory::create();
 $app->get('/alunni', 'ClasseController:getPage');
 $app->get('/alunni/{alunno}', 'SearchController:getPage');
 
+$app->post('/alunni', 'ClasseController:execPost');
+$app->put('/alunni/{alunno}', 'SearchController:execPut');
+$app->delete('/alunni/{alunno}', 'SearchController:execDelete');
+
 $app->get('/json/alunni', 'ClasseController:getJson');
 $app->get('/json/alunni/{alunno}', 'ClasseController:getJson');
+
+
+srand(275);
 
 $app->run();

@@ -29,7 +29,7 @@ class Alunno {
     }
 
     public function setCognome($Cognome){
-        $this->Cognome = $Cognome;
+        $this->cognome = $Cognome;
     }
 
     public function setEta($eta){

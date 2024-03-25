@@ -1,9 +1,9 @@
 <?php
-class ClassModel extends Model implements JsonSerializable{
+class ClasseModel implements JsonSerializable{
 
     protected $class;
-    function getData($class){
-        $classe = new $class();
+    function getData(){
+        $classe = new Classe();
         return $this->processInput($classe->elencoStudenti,4);
     }
 
@@ -30,7 +30,13 @@ class ClassModel extends Model implements JsonSerializable{
     }
 
     public function jsonSerialize(){
-        return $this->getData();
+        $attrs = [];
+        $class_vars = get_class_vars(get_class($this));
+        foreach ($class_vars as $name => $value) {
+          $attrs[$name]=$this->{$name};
+          
+         }
+        return $attrs;
     }
 
 }

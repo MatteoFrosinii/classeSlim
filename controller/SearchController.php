@@ -13,6 +13,27 @@ class SearchController{
         return $response;
     }
 
+    function execPut(Request $request, Response $response, $args){
+        $dataPost = json_decode($request->getBody()->getContents(), true);
+        $classe = new Classe();
+        $toModify = $this->processInput($classe->elencoStudenti, $args["alunno"]);
+        $toModify["nome"] = $dataPost["nome"];
+        $toModify["cognome"] = $dataPost["cognome"];
+        $toModify["eta"] = $dataPost["eta"];
+        $data = "Nome -> ".$toModify["nome"]." Cognome -> ".$toModify["cognome"]." Eta -> ".$toModify["eta"];
+        $response->getBody()->write($data);        
+        return $response;
+    }
+
+    function execDelete(Request $request, Response $response, $args){
+        $dataPost = json_decode($request->getBody()->getContents(), true);
+        $classe = new Classe();
+        $toModify = $this->processInput($classe->elencoStudenti, $args["alunno"]);
+        $data = "Eliminato:     Nome -> ".$toModify["nome"]." Cognome -> ".$toModify["cognome"]." Eta -> ".$toModify["eta"];
+        $response->getBody()->write($data);        
+        return $response;
+    }
+
     function processInput($arrayToProcess, $name=""){
         foreach ($arrayToProcess as $i)
             if($i->getNome() == $name)
